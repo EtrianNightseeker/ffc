@@ -1,0 +1,107 @@
+.container {
+    margin: 3em 0;
+}
+
+.sectionContainer {
+    display: flex;
+    justify-content: center;
+    gap: 150px;
+    margin: 6rem 0;
+    color: white;
+    padding: 20px 0;
+}
+
+.sectionContainer:nth-child(1) {
+    background-color: #066;
+}
+
+.sectionContainer:nth-child(2) {
+    background-color: #5d0000;
+}
+
+.sectionContainer:nth-child(3) {
+    background-color: #d4af37;
+    color: black;
+}
+
+.sectionContainer:nth-child(4) {
+    background-color: rgb(98, 98, 98);
+    color: white;
+}
+
+.sectionContainer:nth-child(2) .packageImageContainer:nth-child(1) {
+    display: none;
+}
+
+.sectionContainer:nth-child(4) .packageImageContainer:nth-child(1) {
+    display: none;
+}
+
+.packageImageContainer {
+    width: 150px;
+    position: relative;
+    height: 300px;
+    aspect-ratio: 1/12;
+}
+
+.packageContainer {
+    padding: 0 20px; 
+    width: 40%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0;
+}
+
+.packageContainer h2 {
+    text-align: center;
+    margin: 0;
+}
+
+@media screen and (max-width: 950px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sectionContainer {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    
+    .sectionContainer:nth-child(2) .packageImageContainer {
+        display: none;
+    }
+
+    .sectionContainer:nth-child(2) .packageImageContainer:nth-child(1) {
+        display: block;
+    }
+
+    .sectionContainer:nth-child(4) .packageImageContainer {
+        display: none;
+    }
+
+    .sectionContainer:nth-child(4) .packageImageContainer:nth-child(1) {
+        display: block;
+    }
+
+    .packageImageContainer {
+        margin: auto;
+    }
+
+    .sectionContainer:first-child .packageImageContainer {
+        height: auto !important;
+        width: 100% !important;
+        aspect-ratio: 1.5/1 !important;
+    }
+
+    .packageContainer {
+        width: calc(100% - 40px);
+    }
+
+    .sectionContainer:nth-child(1) .packageContainer h2 {
+        width: 200px;
+        margin: auto;
+    }
+}

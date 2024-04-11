@@ -1,0 +1,30 @@
+.emailContainer {
+    max-width: 800px; 
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: space-between; 
+    gap: 20px; 
+    margin: auto;
+}
+
+.addressContainer {
+    display: flex; 
+    justify-content: center; 
+    gap: 40px; 
+    font-size: 22px; 
+    margin: 40px;
+}
+
+@media screen and (max-width: 950px) {
+    .emailContainer {
+        flex-direction: column;
+    }
+
+    .emailContainer p {
+        width: 100% !important;
+    }
+
+    .addressContainer {
+        flex-direction: column;
+    }
+}
