@@ -15,9 +15,11 @@ const Layout: FC<Props> = ({ children }) => {
             <Head>
                 <title>Front Four Cellars</title>
             </Head>
+
             <Header />
-            <div style={{ height: '180px' }}></div>
+
             {children}
+
             <Footer />
         </>
     )
