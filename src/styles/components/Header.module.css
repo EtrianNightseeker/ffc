@@ -9,30 +9,121 @@
     z-index: 10;
     top: 0;
 }
-.header nav {
-    width: 1000px;
+.header nav,
+.header nav ~ a {
+    display:none;
 }
-.header nav ul {
-    list-style: none;
+.header nav:nth-of-type(2) {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    position: fixed;
+    top:0;
+    right:-300px;
+    height: 100%;
+    width: 300px;
+    background-color: #5c0100;
+    z-index:30;
+}
+.header nav.active {
+    right:0px;
+}
+.header nav:nth-of-type(2) ul {
     padding: 0;
 }
-.header nav ul li {
-    display: inline-block;
+.header nav:nth-of-type(2) ul li {
+    list-style: none;
+    margin-top: 30px;
+    margin-left: 30px;
 }
-.header nav ul li a {
+.header nav:nth-of-type(2) ul li a {
+    color: white;
     text-decoration: none;
-    color: #5c0100;
+    font-size: 1.8rem;
+    font-weight: 800;
+}
+.header nav:nth-of-type(2) ul li ul {
+    display: block;
+}
+.header nav:nth-of-type(2) ul li ul li {
+    margin-top: 10px;
+}
+.header nav:nth-of-type(2) ul li ul li a {
     font-size: 1.6rem;
     font-weight: 500;
 }
+.header nav:nth-of-type(2) ul li ul.selected {
+    display: block;
+}
+.header nav ~ a:has(img) {
+    display:block
+}
 .header svg {
     position: absolute;
-    right:10px;
-    top:100px;
+    right:20px;
+    top:20px;
 }
+@media screen and (min-width: 992px) {
+    .header nav ~ a ~ nav {
+        display:none;
+    }
+    .header nav {
+        width: 76%;
+        display:block;
+    }
+    .header nav ul {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0;
+    }
+    .header nav:first-child {
+        margin-left: 5rem;
+    }
+    .header nav ul li {
+        display: inline-block;
+        position: relative;
+    }
+    .header nav ul li a {
+        text-decoration: none;
+        color: #5c0100;
+        font-size: 1.8rem;
+        font-weight: 500;
+    }
+    .header nav ul li:has(ul) ul {
+        background-color: #5c0100;
+        flex-direction: column;
+        position: absolute;
+        align-items: flex-start;
+        display:none;
+        margin-top: 1px;
+    }
+    .header nav ul li:has(ul):hover ul {
+        display:block;
+    }
+    .header nav ul li:has(ul) ul li:hover {
+        background-color: #d5b137;
+    }
+    .header nav ul li:has(ul) ul li:hover a {
+        color: #5c0100;
+    }
+    .header nav ul li:has(ul) li {
+        display: block;
+    }
+    .header nav ul li:has(ul) li a {
+        color: white;
+        padding:10px;
+        display:block;
+        min-width: 170px;
+        font-size: 1.4rem;
+    }
+    .header svg {
+        display: block;
+    }
+}
+
+
+
 
 
 
