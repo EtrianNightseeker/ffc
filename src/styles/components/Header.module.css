@@ -23,9 +23,11 @@
     width: 300px;
     background-color: #5c0100;
     z-index:30;
+    transition: right .5s;
 }
-.header nav.active {
-    right:0px;
+
+.header nav:nth-of-type(2).active {
+    right:0px !important;
 }
 .header nav:nth-of-type(2) ul {
     padding: 0;
@@ -40,6 +42,9 @@
     text-decoration: none;
     font-size: 1.8rem;
     font-weight: 800;
+}
+.header nav:nth-of-type(2) ul li a:hover {
+    color: #d5b137;
 }
 .header nav:nth-of-type(2) ul li ul {
     display: block;
@@ -68,6 +73,12 @@
     }
     .header nav {
         width: 76%;
+        display:block;
+    }
+    .header a img {
+        display:none;
+    }
+    .header nav a img {
         display:block;
     }
     .header nav ul {
@@ -118,7 +129,7 @@
         font-size: 1.4rem;
     }
     .header svg {
-        display: block;
+        display: none;
     }
 }
 

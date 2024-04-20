@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -6,23 +6,18 @@ import { faBars, faX} from '@fortawesome/free-solid-svg-icons';
 
 import { Roboto, Karla } from 'next/font/google';
 import styles from '@/styles/components/Header.module.css';
-import Head from 'next/head';
-import Script from 'next/script';
 
 const roboto = Roboto({ weight: '400', subsets: ['latin'] });
 const karla = Karla({ weight: 'variable', subsets: ['latin'] });
 
-
 const Header = () => {
-    const [showMobileNav, setShowMobileNav] = useState(false);
-
-    const handleMobileToggleClicked = () => {
-
-    }
 
     useEffect(() => {
-        document.querySelector("header nav.active svg")?.addEventListener("click",() => {
-            document.querySelector("header nav:nth-of-type(2)")?.classList.toggle("active");
+        document.querySelector("header nav ~ nav ~ svg")?.addEventListener("click",() => {
+            document.querySelector("header nav:nth-of-type(2)")?.classList.add("active");
+        })
+        document.querySelector("header nav ~ nav svg")?.addEventListener("click",() => {
+            document.querySelector("header nav:nth-of-type(2)")?.classList.remove("active");
         })
     },[]);
 
@@ -70,7 +65,7 @@ const Header = () => {
                 <Image src="/frontfourcellars-logo.jpg" alt="image" height="214" width="300" />
             </Link>
 
-            <nav className="active">
+            <nav>
                 <ul>
                    <li>
                         <Link href="https://frontfourcellars.orderport.net/wines/All-Wines">Shop</Link>
