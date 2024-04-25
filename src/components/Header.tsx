@@ -19,6 +19,23 @@ const Header = () => {
         document.querySelector("header nav ~ nav svg")?.addEventListener("click",() => {
             document.querySelector("header nav:nth-of-type(2)")?.classList.remove("active");
         })
+        
+        const mobileNavItems = document.querySelectorAll('header nav:nth-of-type(2) ul li');
+        for (const item of mobileNavItems) {
+          item.addEventListener('click', function (event) {
+            // @ts-ignore
+            try {
+                const selected = document.querySelector('header nav:nth-of-type(2) ul li ul[class="selected"]');
+                if (selected) {
+                    selected.classList.remove("selected")
+                }
+                // @ts-ignore
+                event.target.nextSibling.classList.add("selected");
+            }
+            catch(e) {}
+          });
+        }
+
     },[]);
 
     return (
@@ -26,98 +43,115 @@ const Header = () => {
             <nav>
                 <ul>
                    <li>
-                        <Link href="https://frontfourcellars.orderport.net/wines/All-Wines">Shop</Link>
+                        <a href="https://frontfourcellars.orderport.net/wines/All-Wines">Shop</a>
                         <ul>
-                            <li><Link href="https://frontfourcellars.orderport.net/wines/All-Wines">All</Link></li>
-                            <li><Link href="https://frontfourcellars.orderport.net/wines/All-Wines/Red-Wine">Red</Link></li>
-                            <li><Link href="https://frontfourcellars.orderport.net/wines/All-Wines/Rose-Wine">Rose</Link></li>
-                            <li><Link href="https://frontfourcellars.orderport.net/wines/All-Wines/White-Wine">White</Link></li>
-                            <li><Link href="https://frontfourcellars.orderport.net/wines/All-Wines/Sparkling">Sparkling</Link></li>
-                            <li><Link href="https://frontfourcellars.orderport.net/wines/wines/Gift-Cards">Gift&nbsp;Cards</Link></li>
-                            <li><Link href="https://frontfourcellars.orderport.net/wines/wines/Merchandise">Merch</Link></li>
+                            <li><a href="https://frontfourcellars.orderport.net/wines/All-Wines">All</a></li>
+                            <li><a href="https://frontfourcellars.orderport.net/wines/All-Wines/Red-Wine">Red</a></li>
+                            <li><a href="https://frontfourcellars.orderport.net/wines/All-Wines/Rose-Wine">Rose</a></li>
+                            <li><a href="https://frontfourcellars.orderport.net/wines/All-Wines/White-Wine">White</a></li>
+                            <li><a href="https://frontfourcellars.orderport.net/wines/All-Wines/Sparkling">Sparkling</a></li>
+                            <li><a href="https://frontfourcellars.orderport.net/wines/wines/Gift-Cards">Gift&nbsp;Cards</a></li>
+                            <li><a href="https://frontfourcellars.orderport.net/wines/wines/Merchandise">Merch</a></li>
                         </ul>
                     </li>
                    <li>
-                        <Link href="https://frontfourcellars.orderport.net/wines/Events">Events</Link>
+                        <a href="https://frontfourcellars.orderport.net/wines/Events">Events</a>
                         <ul>
-                            <li><Link href="https://frontfourcellars.orderport.net/wines/Events">Calendar</Link></li>
-                            <li><Link href="https://frontfourcellars.orderport.net/wines/Events">Tickets</Link></li>
+                            <li><a href="https://frontfourcellars.orderport.net/wines/Events">Calendar</a></li>
+                            <li><a href="https://frontfourcellars.orderport.net/wines/Events">Tickets</a></li>
+                        </ul>
+                    </li>
+                   <li>
+                        <a href="https://frontfourcellars.orderport.net/reservations">Reservations</a>
+                        <ul>
+                            <li><a href="https://frontfourcellars.orderport.net/reservations">NH&nbsp;Tasting&nbsp;Room</a></li>
+                            <li><a href="https://frontfourcellars.orderport.net/wines/Book-a-Group-Event">Book&nbsp;a&nbsp;Group&nbsp;Event</a></li>
+                            <li><a href="https://frontfourcellars.com/events/packages">Packages</a></li>
+                            <li><a href="https://frontfourcellars.com/events/packages">Weddings</a></li>
+                            <li><a href="https://frontfourcellars.com/events/packages">Special&nbsp;Occasions</a></li>
+                            <li><a href="https://frontfourcellars.com/events/packages">Realtor/Mortgage</a></li>
+                            <li><a href="https://frontfourcellars.com/events/packages">Private&nbsp;Label&nbsp;Program</a></li>
                         </ul>
                     </li>
                    <li>
                         <Link href="/">
-                            <Image src="/logo-no-tagline.png" alt="image" height="122" width="225" />
+                            <Image src="/logo-no-tagline.png" alt="image" height="156" width="282" />
                         </Link>
                    </li> 
-                   <li className="dropdown">
-                        <Link href="/events/packages">Reservations</Link>
-                        <ul className="dropdown-menu">
-                            <li><Link href="https://frontfourcellars.orderport.net/reservations">NH&nbsp;Tasting&nbsp;Room</Link></li>
-                            <li><Link href="https://frontfourcellars.orderport.net/wines/Book-a-Group-Event">Book&nbsp;a&nbsp;Group&nbsp;Event</Link></li>
-                            <li><Link href="https://frontfourcellars.com/events/packages">Packages</Link></li>
-                            <li><Link href="https://frontfourcellars.com/events/packages">Weddings</Link></li>
-                            <li><Link href="https://frontfourcellars.com/events/packages">Special&nbsp;Occasions</Link></li>
-                            <li><Link href="https://frontfourcellars.com/events/packages">Realtor/Mortgage</Link></li>
-                            <li><Link href="https://frontfourcellars.com/events/packages">Private&nbsp;Label&nbsp;Program</Link></li>
-                        </ul>
+                   <li>
+                        <a href="https://frontfourcellars.orderport.net/wine-club/">Wine Club</a>
                     </li>
-                   <li className="dropdown">
-                        <Link href="#">About Us</Link>
-                        <ul className="dropdown-menu">
+                   <li>
+                        <Link href="/about/story">About Us</Link>
+                        <ul>
                             <li><Link href="/about/story">Our&nbsp;Story</Link></li>
                             <li><Link href="/about/team">Our&nbsp;Team</Link></li>
                             <li><Link href="/about/philosophy">Our&nbsp;Philosophy</Link></li>
                             <li><Link href="/about/contactus">Contact&nbsp;Us</Link></li>
                         </ul>
                     </li>
+                   <li>
+                        <Link href="https://frontfourcellars.com/newhampshire">Locations</Link>
+                        <ul>
+                            <li><Link href="https://frontfourcellars.com/newhampshire">New&nbsp;Hampshire</Link></li>
+                        </ul>
+                    </li>
                 </ul>
             </nav>
 
             <Link href="/">
-                <Image src="/logo-no-tagline.png" alt="image" height="122" width="225" />
+                <Image src="/logo-no-tagline.png" alt="image" height="156" width="282" />
             </Link>
 
             <nav>
                 <ul>
                    <li>
-                        <Link href="https://frontfourcellars.orderport.net/wines/All-Wines">Shop</Link>
+                        <a href="#">Shop</a>
                         <ul>
-                            <li><Link href="https://frontfourcellars.orderport.net/wines/All-Wines">All</Link></li>
-                            <li><Link href="https://frontfourcellars.orderport.net/wines/All-Wines/Red-Wine">Red</Link></li>
-                            <li><Link href="https://frontfourcellars.orderport.net/wines/All-Wines/Rose-Wine">Rose</Link></li>
-                            <li><Link href="https://frontfourcellars.orderport.net/wines/All-Wines/White-Wine">White</Link></li>
-                            <li><Link href="https://frontfourcellars.orderport.net/wines/All-Wines/Sparkling">Sparkling</Link></li>
-                            <li><Link href="https://frontfourcellars.orderport.net/wines/wines/Gift-Cards">Gift&nbsp;Cards</Link></li>
-                            <li><Link href="https://frontfourcellars.orderport.net/wines/wines/Merchandise">Merch</Link></li>
-                            <li><Link href="https://frontfourcellars.orderport.net/wines/wines/Merchandise">Merch</Link></li>
+                            <li><a href="https://frontfourcellars.orderport.net/wines/All-Wines">All</a></li>
+                            <li><a href="https://frontfourcellars.orderport.net/wines/All-Wines/Red-Wine">Red</a></li>
+                            <li><a href="https://frontfourcellars.orderport.net/wines/All-Wines/Rose-Wine">Rose</a></li>
+                            <li><a href="https://frontfourcellars.orderport.net/wines/All-Wines/White-Wine">White</a></li>
+                            <li><a href="https://frontfourcellars.orderport.net/wines/All-Wines/Sparkling">Sparkling</a></li>
+                            <li><a href="https://frontfourcellars.orderport.net/wines/wines/Gift-Cards">Gift&nbsp;Cards</a></li>
+                            <li><a href="https://frontfourcellars.orderport.net/wines/wines/Merchandise">Merch</a></li>
                         </ul>
                     </li>
                    <li>
-                        <Link href="https://frontfourcellars.orderport.net/wines/Events">Events</Link>
+                        <a href="#">Events</a>
                         <ul>
-                            <li><Link href="https://frontfourcellars.orderport.net/wines/Events">Calendar</Link></li>
-                            <li><Link href="https://frontfourcellars.orderport.net/wines/Events">Tickets</Link></li>
+                            <li><a href="https://frontfourcellars.orderport.net/wines/Events">Calendar</a></li>
+                            <li><a href="https://frontfourcellars.orderport.net/wines/Events">Tickets</a></li>
                         </ul>
                     </li>
                    <li>
-                        <Link href="/events/packages">Reservations</Link>
-                        <ul className="dropdown-menu">
-                            <li><Link href="https://frontfourcellars.orderport.net/reservations">NH&nbsp;Tasting&nbsp;Room</Link></li>
-                            <li><Link href="https://frontfourcellars.orderport.net/wines/Book-a-Group-Event">Book&nbsp;a&nbsp;Group&nbsp;Event</Link></li>
-                            <li><Link href="https://frontfourcellars.com/events/packages">Packages</Link></li>
-                            <li><Link href="https://frontfourcellars.com/events/packages">Weddings</Link></li>
-                            <li><Link href="https://frontfourcellars.com/events/packages">Special&nbsp;Occasions</Link></li>
-                            <li><Link href="https://frontfourcellars.com/events/packages">Realtor/Mortgage</Link></li>
-                            <li><Link href="https://frontfourcellars.com/events/packages">Private&nbsp;Label&nbsp;Program</Link></li>
+                        <a href="#">Reservations</a>
+                        <ul>
+                            <li><a href="https://frontfourcellars.orderport.net/reservations">NH&nbsp;Tasting&nbsp;Room</a></li>
+                            <li><a href="https://frontfourcellars.orderport.net/wines/Book-a-Group-Event">Book&nbsp;a&nbsp;Group&nbsp;Event</a></li>
+                            <li><a href="https://frontfourcellars.com/events/packages">Packages</a></li>
+                            <li><a href="https://frontfourcellars.com/events/packages">Weddings</a></li>
+                            <li><a href="https://frontfourcellars.com/events/packages">Special&nbsp;Occasions</a></li>
+                            <li><a href="https://frontfourcellars.com/events/packages">Realtor/Mortgage</a></li>
+                            <li><a href="https://frontfourcellars.com/events/packages">Private&nbsp;Label&nbsp;Program</a></li>
                         </ul>
                     </li>
                    <li>
-                        <Link href="#">About Us</Link>
+                        <a href="https://frontfourcellars.orderport.net/wine-club/">Wine Club</a>
+                    </li>
+                   <li>
+                        <a href="#">About Us</a>
                         <ul>
                             <li><Link href="/about/story">Our Story</Link></li>
                             <li><Link href="/about/team">Our Team</Link></li>
                             <li><Link href="/about/philosophy">Our Philosophy</Link></li>
                             <li><Link href="/about/contactus">Contact Us</Link></li>
+                        </ul>
+                    </li>
+                   <li>
+                        <Link href="https://frontfourcellars.com/newhampshire">Locations</Link>
+                        <ul>
+                            <li><Link href="https://frontfourcellars.com/newhampshire">New&nbsp;Hampshire</Link></li>
                         </ul>
                     </li>
                 </ul>

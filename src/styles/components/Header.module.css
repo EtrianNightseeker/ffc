@@ -1,7 +1,7 @@
 .header {
     background-color: white;
     width: 100%;
-    height: 140px;
+    height: 180px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -40,24 +40,25 @@
 .header nav:nth-of-type(2) ul li a {
     color: white;
     text-decoration: none;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: 800;
 }
 .header nav:nth-of-type(2) ul li a:hover {
     color: #d5b137;
 }
 .header nav:nth-of-type(2) ul li ul {
-    display: block;
+    display: none;
+}
+.header nav:nth-of-type(2) ul li ul[class="selected"] {
+    display:block !important;
 }
 .header nav:nth-of-type(2) ul li ul li {
     margin-top: 10px;
+    display:block;
 }
 .header nav:nth-of-type(2) ul li ul li a {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     font-weight: 500;
-}
-.header nav:nth-of-type(2) ul li ul.selected {
-    display: block;
 }
 .header nav ~ a:has(img) {
     display:block
@@ -67,7 +68,7 @@
     right:20px;
     top:20px;
 }
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 1295px) {
     .header nav ~ a ~ nav {
         display:none;
     }

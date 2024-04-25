@@ -19,7 +19,7 @@ export default function Team() {
         </Head>
         <main className={gilda.className}>
             <Layout>
-                <section style={{ width: '90%', margin: '0 auto', position: 'relative' }}>
+                <section style={{ width: '90%', margin: '220px auto', position: 'relative' }}>
                     <h1 style={{ 
                         textAlign: 'center', 
                         fontSize: '60px', 
