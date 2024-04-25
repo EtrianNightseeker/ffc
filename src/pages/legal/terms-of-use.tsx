@@ -14,7 +14,7 @@ const TermsOfUse = () => {
         <>
             <main className={gilda.className}>
             <Layout>
-                <section className={gilda.className} style={{ margin: '0 auto', position: 'relative' }}>
+                <section className={gilda.className} style={{ margin: '220px auto', position: 'relative' }}>
                     <h1 style={{ 
                         textAlign: 'center', 
                         fontSize: '48px', 

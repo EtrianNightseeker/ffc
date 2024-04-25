@@ -65,12 +65,12 @@ const Header = () => {
                         <a href="https://frontfourcellars.orderport.net/reservations">Reservations</a>
                         <ul>
                             <li><a href="https://frontfourcellars.orderport.net/reservations">NH&nbsp;Tasting&nbsp;Room</a></li>
-                            <li><a href="https://frontfourcellars.orderport.net/wines/Book-a-Group-Event">Book&nbsp;a&nbsp;Group&nbsp;Event</a></li>
-                            <li><a href="https://frontfourcellars.com/events/packages">Packages</a></li>
-                            <li><a href="https://frontfourcellars.com/events/packages">Weddings</a></li>
-                            <li><a href="https://frontfourcellars.com/events/packages">Special&nbsp;Occasions</a></li>
-                            <li><a href="https://frontfourcellars.com/events/packages">Realtor/Mortgage</a></li>
-                            <li><a href="https://frontfourcellars.com/events/packages">Private&nbsp;Label&nbsp;Program</a></li>
+                            <li><a href="https://frontfourcellars.orderport.net/wines/Book-a-Group-Event">Book&nbsp;a&nbsp;Group&nbsp;Event&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+                            <li data-package-title><Link href="/events/packages">Packages</Link></li>
+                            <li data-package><Link href="/events/packages">Weddings</Link></li>
+                            <li data-package><Link href="/events/packages">Special&nbsp;Occasions</Link></li>
+                            <li data-package><Link href="/events/packages">Realtor/Mortgage</Link></li>
+                            <li data-package><Link href="/events/packages">Private&nbsp;Label&nbsp;Program</Link></li>
                         </ul>
                     </li>
                    <li>
@@ -91,9 +91,9 @@ const Header = () => {
                         </ul>
                     </li>
                    <li>
-                        <Link href="https://frontfourcellars.com/newhampshire">Locations</Link>
+                        <Link href="/newhampshire">Locations</Link>
                         <ul>
-                            <li><Link href="https://frontfourcellars.com/newhampshire">New&nbsp;Hampshire</Link></li>
+                            <li><Link href="/newhampshire">New&nbsp;Hampshire</Link></li>
                         </ul>
                     </li>
                 </ul>
@@ -129,11 +129,11 @@ const Header = () => {
                         <ul>
                             <li><a href="https://frontfourcellars.orderport.net/reservations">NH&nbsp;Tasting&nbsp;Room</a></li>
                             <li><a href="https://frontfourcellars.orderport.net/wines/Book-a-Group-Event">Book&nbsp;a&nbsp;Group&nbsp;Event</a></li>
-                            <li><a href="https://frontfourcellars.com/events/packages">Packages</a></li>
-                            <li><a href="https://frontfourcellars.com/events/packages">Weddings</a></li>
-                            <li><a href="https://frontfourcellars.com/events/packages">Special&nbsp;Occasions</a></li>
-                            <li><a href="https://frontfourcellars.com/events/packages">Realtor/Mortgage</a></li>
-                            <li><a href="https://frontfourcellars.com/events/packages">Private&nbsp;Label&nbsp;Program</a></li>
+                            <li data-package-title><Link href="/events/packages">Packages</Link></li>
+                            <li data-package><Link href="/events/packages">Weddings</Link></li>
+                            <li data-package><Link href="/events/packages">Special&nbsp;Occasions</Link></li>
+                            <li data-package><Link href="/events/packages">Realtor/Mortgage</Link></li>
+                            <li data-package><Link href="/events/packages">Private&nbsp;Label&nbsp;Program</Link></li>
                         </ul>
                     </li>
                    <li>
@@ -149,15 +149,15 @@ const Header = () => {
                         </ul>
                     </li>
                    <li>
-                        <Link href="https://frontfourcellars.com/newhampshire">Locations</Link>
+                        <Link href="#">Locations</Link>
                         <ul>
-                            <li><Link href="https://frontfourcellars.com/newhampshire">New&nbsp;Hampshire</Link></li>
+                            <li><Link href="/newhampshire">New&nbsp;Hampshire</Link></li>
                         </ul>
                     </li>
                 </ul>
-                <FontAwesomeIcon icon={faX} style={{ height: '25px', cursor: 'pointer', color:'white'  }} />
+                <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="x" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z"></path></svg>
             </nav>
-            <FontAwesomeIcon icon={faBars} style={{ height: '25px', cursor: 'pointer'}} />
+            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bars" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"></path></svg>
         </header>
     );
 }
