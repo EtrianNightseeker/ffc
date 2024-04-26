@@ -34,10 +34,8 @@ const Footer = () => {
                             <br/>
                             <em>By appointment only</em>
                             <br/>
-                            <em>Winery Tasting Room</em>
                             <br/>
-                            <br/>
-                            <em>Tasting room coming to<br />Hanover County in early 2025</em>
+                            <em>Winery Tasting room coming to Hanover County in early 2025</em>
                         </div>
                         <div>
                             <strong>New Hampshire Tasting Room</strong>
@@ -50,15 +48,15 @@ const Footer = () => {
                             <strong>Hours:</strong>
                             <div>
                                 <em>Mon-Thurs:&nbsp;</em>
-                                <em>12:00pm - 7:00pm</em>
+                                <em>12pm - 7pm</em>
                             </div>
                             <div>
                                 <em>Fri & Sat:</em>
-                                <em>11:00am - 8:00pm</em>
+                                <em>11am - 8pm</em>
                             </div>
                             <div>
                                 <em>Sunday:</em>
-                                <em>1:00pm - 6:00pm</em>
+                                <em>1pm - 6pm</em>
                             </div>
                         </div>
                     </div>
