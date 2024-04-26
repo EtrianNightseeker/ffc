@@ -1,11 +1,7 @@
-import { FC } from 'react';
-import Image from 'next/image';
-import Head from 'next/head';
 import { Gilda_Display } from 'next/font/google';
 
 import Layout from '@/components/Layout';
 import styles from '@/styles/pages/legal/PrivacyPolicy.module.css';
-import Link from 'next/link';
 
 const gilda = Gilda_Display({ weight: '400', subsets: ['latin'] });
 
@@ -14,7 +10,7 @@ const PrivacyPolicy = () => {
         <>
             <main className={gilda.className}>
             <Layout>
-                <section className={gilda.className} style={{ margin: '0 auto', position: 'relative' }}>
+                <section className={gilda.className} style={{ margin: '220px auto', position: 'relative' }}>
                     <h1 style={{ 
                         textAlign: 'center', 
                         fontSize: '48px', 

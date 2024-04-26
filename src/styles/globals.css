@@ -12,6 +12,11 @@ body {
   position: relative;
 }
 
+
+nav:nth-of-type(2).active {
+    right:0px !important;
+}
+
 .v65-widgetProduct-addToCart legend {
   display: none;
 }

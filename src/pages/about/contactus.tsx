@@ -18,7 +18,7 @@ export default function ContactUs() {
         </Head>
         <main className={gilda.className}>
             <Layout>
-                <section>
+                <section style={{marginTop: '180px'}}>
                     <div style={{ padding: '20px' }}>
                         <h1 style={{ 
                             textAlign: 'center', 

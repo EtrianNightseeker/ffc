@@ -1,327 +1,164 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faCartShopping, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faX} from '@fortawesome/free-solid-svg-icons';
 
 import { Roboto, Karla } from 'next/font/google';
 import styles from '@/styles/components/Header.module.css';
-import Head from 'next/head';
-import Script from 'next/script';
 
 const roboto = Roboto({ weight: '400', subsets: ['latin'] });
 const karla = Karla({ weight: 'variable', subsets: ['latin'] });
 
-type SubItemProps = {
-    text: string,
-    url: string,
-}
-
-type NavItemProps = {
-    text: string,
-    url: string,
-    subItems?: SubItemProps[],
-}
-
-const NavItem = (props: NavItemProps) => {
-    const { text, url, subItems } = props;
-
-    const [showSubMenu, setShowSubMenu] = useState(false);
-
-    const handleHoverChange = () => {
-        if (!subItems?.length) {
-            return;
-        }
-
-        setShowSubMenu(!showSubMenu);
-    }
-
-    return (
-        <li style={{ position: 'relative' }} onMouseEnter={handleHoverChange} onMouseLeave={handleHoverChange}>
-            <Link href={url}>{text}</Link>
-            {/* subItems?.length && (<button>
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="7" viewBox="0 0 12 7">
-                    <path 
-                        fill-rule="evenodd" 
-                        stroke="currentColor" 
-                        stroke-linecap="round" 
-                        stroke-linejoin="round" 
-                        stroke-width="1.5" 
-                        d="M1.385 1.417L6 5.583m4.615-4.166L6 5.583">
-                    </path>
-                </svg>
-            </button>)*/}
-
-            { subItems?.length && showSubMenu && (
-                <ul style={{ 
-                    position: 'absolute', 
-                    top: '40px', 
-                    left: '0', 
-                    width: '220px', 
-                    display: 'flex', 
-                    flexDirection: 'column', 
-                    textAlign: 'left',
-                    zIndex: '999999',
-                    backgroundColor: 'white',
-                    border: '1px solid #ccc', 
-                }}>
-                    {subItems.map((item) => {
-                        return (
-                            <li style={{ width: '100%' }} key={item.text}>
-                                <Link href={item.url} style={{ padding: '12px 30px', fontSize: '16px', cursor: 'pointer' }}>{item.text}</Link>
-                            </li>
-                        );
-                    })}
-                </ul>
-            )}
-        </li>
-    );
-}
-
 const Header = () => {
-    const [showMobileNav, setShowMobileNav] = useState(false);
-
-    const shopSubItems: SubItemProps[] = [
-        {
-            text: 'All Wines',
-            url: 'https://frontfourcellars.orderport.net/wines/All-Wines',
-        },
-        {
-            text: 'Reds',
-            url: 'https://frontfourcellars.orderport.net/wines/All-Wines/Red-Wine',
-        },
-        {
-            text: 'Roses',
-            url: 'https://frontfourcellars.orderport.net/wines/All-Wines/Rose-Wine',
-        },
-        {
-            text: 'Whites',
-            url: 'https://frontfourcellars.orderport.net/wines/All-Wines/White-Wine',
-        },
-        {
-            text: 'Merchandise',
-            url: 'https://frontfourcellars.orderport.net/wines/Merchandise',
-        },
-        /*{
-            text: 'Dry Mill Collection',
-            url: 'https://shop.frontfourcellars.com/Wines/Dry-Mill-Collection',
-        },
-        {
-            text: 'Front Four Selections',
-            url: 'https://shop.frontfourcellars.com/Shop/Front-Four-Selections',
-        }*/
-        /*{
-            text: 'Fruits',
-            url: '#',
-        },
-        {
-            text: 'Julia\'s Kitchen',
-            url: '#',
-        },
-        {
-            text: 'Wedding Packages',
-            url: '#',
-        },
-        {
-            text: 'Merchandise',
-            url: '#',
-        },
-        {
-            text: 'Gift Sets',
-            url: '#',
-        },*/
-    ];
-
-    const eventsSubItems: SubItemProps[] = [
-        {
-            text: 'Packages',
-            url: '/events/packages',
-        },
-        /*{
-            text: 'Event Calendar',
-            url: 'https://shop.frontfourcellars.com/Special-Events/Event-Calendar'
-        }*/
-    ];
-
-    const aboutUsSubItems: SubItemProps[] = [
-        {
-            text: 'Our Story',
-            url: '/about/story',
-        },
-        {
-            text: 'Our Team',
-            url: '/about/team',
-        },
-        {
-            text: 'Our Philosophy',
-            url: '/about/philosophy',
-        },
-        {
-            text: 'Contact Us',
-            url: '/about/contactus',
-        },
-    ];
-
-    const handleMobileToggleClicked = () => {
-        setShowMobileNav(!showMobileNav);
-    }
 
     useEffect(() => {
-        /*const script = document.createElement('script');
-        script.id = 'init-wd';
-        script.innerHTML = `
-            vin65remote.cart.init('https://shop.frontfourcellars.com/',0);
-            vin65remote.usertools.loginWidget('https://shop.frontfourcellars.com/');
-        `;
-        script.async = true;
+        document.querySelector("header nav ~ nav ~ svg")?.addEventListener("click",() => {
+            document.querySelector("header nav:nth-of-type(2)")?.classList.add("active");
+        })
+        document.querySelector("header nav ~ nav svg")?.addEventListener("click",() => {
+            document.querySelector("header nav:nth-of-type(2)")?.classList.remove("active");
+        })
+        
+        const mobileNavItems = document.querySelectorAll('header nav:nth-of-type(2) ul li');
+        for (const item of mobileNavItems) {
+          item.addEventListener('click', function (event) {
+            // @ts-ignore
+            try {
+                const selected = document.querySelector('header nav:nth-of-type(2) ul li ul[class="selected"]');
+                if (selected) {
+                    selected.classList.remove("selected")
+                }
+                // @ts-ignore
+                event.target.nextSibling.classList.add("selected");
+            }
+            catch(e) {}
+          });
+        }
 
-        document.body.appendChild(script);
-
-        replaceCartInfo();
-
-        return () => {
-            document.body.removeChild(script);
-        }*/
-    });
-
-    const [itemCount, setItemCount] = useState<string>('0');
-    const [cost, setCost] = useState<string>('$0.00');
-
-    const replaceCartInfo = () => {
-        setTimeout(() => {
-            const itemCount = document.getElementsByClassName('v65-widgetModalCart-itemCount')?.[0]?.innerHTML;
-            const cost = document.getElementsByClassName('v65-widgetModalCart-subTotal')?.[0]?.innerHTML;
-
-            setItemCount(itemCount || '0');
-            setCost(cost || '$0.00');
-        }, 1000)
-    }
-
-    /*
-    <div className={styles.headerLogin}>
-        <span className={karla.className} style={{ display: 'flex' }}>
-            <FontAwesomeIcon icon={faUser} style={{ height: '10px', cursor: 'pointer', marginTop: '3px', marginRight: '5px', color: '#5d0000' }} />
-            <div v65remotejs="loginWidget"></div>
-        </span>
-    </div>
-    */
+    },[]);
 
     return (
-        <>
-        <header className={styles.headerContainer}>
-            <div className={styles.headerTagline}>
-                An Urban Craft Winery Where People Connect
-            </div>
-            <section>
-                <Link href="/">
-                    <Image src="/FFC final circle logo only.png" alt="image" height="100" width="100" />
-                </Link>
-            </section>
-            <section className={styles.navContainer}>
-                <nav className={karla.className}>
-                    <ul>
-                        <NavItem text="Home" url="/" />
-                        <NavItem text="Shop" url="https://frontfourcellars.orderport.net/wines/All-Wines" subItems={shopSubItems} />
-                        <NavItem text="Wine Club" url="https://frontfourcellars.orderport.net/wine-club/" />
-                        <NavItem text="Special Events" url="/events/packages" subItems={eventsSubItems} />
-                        <NavItem text="About Us" url="" subItems={aboutUsSubItems} />
-                    </ul>
-                </nav>
-            </section>
-            <section className={styles.navMobileContainer}>
-                <FontAwesomeIcon icon={faBars} style={{ height: '25px', cursor: 'pointer' }} onClick={handleMobileToggleClicked} />
-            </section>
-            {showMobileNav && (
-            <section className={styles.mobileNav}>
+        <header className={styles.header}>
+            <nav>
                 <ul>
-                    <li>
-                        <Link href={'/'}>Home</Link>
-                    </li>
-                    <li>
-                        <Link href={'https://frontfourcellars.orderport.net/wines/All-Wines'}>Shop</Link>
-                    </li>
-                    <li>
+                   <li>
+                        <a href="https://frontfourcellars.orderport.net/wines/All-Wines">Shop</a>
                         <ul>
-                            <li>
-                                <Link href={'https://frontfourcellars.orderport.net/wines/All-Wines'}>All Wines</Link>
-                            </li>
-                            <li>
-                                <Link href={'https://frontfourcellars.orderport.net/wines/All-Wines/Red-Wine'}>Reds</Link>
-                            </li>
-                            <li>
-                                <Link href={'https://frontfourcellars.orderport.net/wines/All-Wines/Rose-Wine'}>Roses</Link>
-                            </li>
-                            <li>
-                                <Link href={'https://frontfourcellars.orderport.net/wines/All-Wines/White-Wine'}>Whites</Link>
-                            </li>
-                            {/*<li>
-                                <Link href={'https://shop.frontfourcellars.com/Wines/Dry-Mill-Collection'}>Dry Mill Collection</Link>
-                            </li>
-                            <li>
-                                <Link href={'https://shop.frontfourcellars.com/Shop/Front-Four-Selections'}>Front Four Selections</Link>
-                            </li>*/}
+                            <li><a href="https://frontfourcellars.orderport.net/wines/All-Wines">All</a></li>
+                            <li><a href="https://frontfourcellars.orderport.net/wines/All-Wines/Red-Wine">Red</a></li>
+                            <li><a href="https://frontfourcellars.orderport.net/wines/All-Wines/Rose-Wine">Rose</a></li>
+                            <li><a href="https://frontfourcellars.orderport.net/wines/All-Wines/White-Wine">White</a></li>
+                            <li><a href="https://frontfourcellars.orderport.net/wines/All-Wines/Sparkling">Sparkling</a></li>
+                            <li><a href="https://frontfourcellars.orderport.net/wines/wines/Gift-Cards">Gift&nbsp;Cards</a></li>
+                            <li><a href="https://frontfourcellars.orderport.net/wines/wines/Merchandise">Merch</a></li>
                         </ul>
                     </li>
-                    <li>
-                        <Link href={'https://frontfourcellars.orderport.net/wine-club/'}>Wine Club</Link>
-                    </li>
-                    <li>
-                        <Link href={'/events/packages'}>Special Events</Link>
-                    </li>
-                    <li>
+                   <li>
+                        <a href="https://frontfourcellars.orderport.net/wines/Events">Events</a>
                         <ul>
-                            <li>
-                                <Link href={'/events/packages'}>Packages</Link>
-                            </li>
-                            {/*<li>
-                                <Link href={'https://shop.frontfourcellars.com/Special-Events/Event-Calendar'}>Event Calendar</Link>
-                        </li>*/}
+                            <li><a href="https://frontfourcellars.orderport.net/wines/Events">Calendar</a></li>
+                            <li><a href="https://frontfourcellars.orderport.net/wines/Events">Tickets</a></li>
                         </ul>
                     </li>
-                    <li>About Us</li>
-                    <li>
+                   <li>
+                        <a href="https://frontfourcellars.orderport.net/reservations">Reservations</a>
                         <ul>
-                            <li>
-                                <Link href={'/about/story'}>Our Story</Link>
-                            </li>
-                            <li>
-                                <Link href={'/about/team'}>Our Team</Link>
-                            </li>
-                            <li>
-                                <Link href={'/about/philosophy'}>Our Philosophy</Link>
-                            </li>
-                            <li>
-                                <Link href={'/about/contactus'}>Contact Us</Link>
-                            </li>
+                            <li><a href="https://frontfourcellars.orderport.net/reservations">NH&nbsp;Tasting&nbsp;Room</a></li>
+                            <li><a href="https://frontfourcellars.orderport.net/wines/Book-a-Group-Event">Book&nbsp;a&nbsp;Group&nbsp;Event&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+                            <li data-package-title><Link href="/events/packages">Packages</Link></li>
+                            <li data-package><Link href="/events/packages">Weddings</Link></li>
+                            <li data-package><Link href="/events/packages">Special&nbsp;Occasions</Link></li>
+                            <li data-package><Link href="/events/packages">Realtor/Mortgage</Link></li>
+                            <li data-package><Link href="/events/packages">Private&nbsp;Label&nbsp;Program</Link></li>
+                        </ul>
+                    </li>
+                   <li>
+                        <Link href="/">
+                            <Image src="/logo-no-tagline.png" alt="image" height="156" width="282" />
+                        </Link>
+                   </li> 
+                   <li>
+                        <a href="https://frontfourcellars.orderport.net/wine-club/">Wine Club</a>
+                    </li>
+                   <li>
+                        <Link href="/about/story">About Us</Link>
+                        <ul>
+                            <li><Link href="/about/story">Our&nbsp;Story</Link></li>
+                            <li><Link href="/about/team">Our&nbsp;Team</Link></li>
+                            <li><Link href="/about/philosophy">Our&nbsp;Philosophy</Link></li>
+                            <li><Link href="/about/contactus">Contact&nbsp;Us</Link></li>
+                        </ul>
+                    </li>
+                   <li>
+                        <Link href="/newhampshire">Locations</Link>
+                        <ul>
+                            <li><Link href="/newhampshire">New&nbsp;Hampshire</Link></li>
                         </ul>
                     </li>
                 </ul>
-            </section>
-            )}
-            {/*<section className={styles.otherContainer}>
-                <div style={{ display: 'flex', gap: '5px' }}>
-                    {/*<div style={{ position: 'relative', height: '20px', padding: '1px' }}>
-                        <input style={{ height: '100%', padding: '5px 15px 5px 5px' }} />
-                        <FontAwesomeIcon icon={faMagnifyingGlass} style={{ height: '17px', position: 'absolute', right: '8px', top: '8px' }} />
-                        </div>*/}
-                    {/*<div>
-                        <button style={{ height: '35px', width: '150px', backgroundColor: '#5d0000', border: 0, color: 'white' }}>MY ACCOUNT</button>
-                    </div>}
-                    <div>
-                        <a id="cart-selection-link" href='javascript:vin65remote.cart.toggleCart();'>
-                            <FontAwesomeIcon icon={faCartShopping} style={{ height: '12px', marginTop: '10px', color: '#5d0000', marginRight: '5px' }} />
-                            <span id="itemCount">({itemCount})</span> | <span id="cost">{cost}</span>
-                        </a>
-                        
-                        {/* @ts-ignore  }
-                        <div v65remotejs="modalCart" style={{ display: 'none' }}></div>
-                    </div>
-                </div>
-                    </section>*/}
-            <section style={{ width: '100%' }}>
-            </section>
+            </nav>
+
+            <Link href="/">
+                <Image src="/logo-no-tagline.png" alt="image" height="156" width="282" />
+            </Link>
+
+            <nav>
+                <ul>
+                   <li>
+                        <a href="#">Shop</a>
+                        <ul>
+                            <li><a href="https://frontfourcellars.orderport.net/wines/All-Wines">All</a></li>
+                            <li><a href="https://frontfourcellars.orderport.net/wines/All-Wines/Red-Wine">Red</a></li>
+                            <li><a href="https://frontfourcellars.orderport.net/wines/All-Wines/Rose-Wine">Rose</a></li>
+                            <li><a href="https://frontfourcellars.orderport.net/wines/All-Wines/White-Wine">White</a></li>
+                            <li><a href="https://frontfourcellars.orderport.net/wines/All-Wines/Sparkling">Sparkling</a></li>
+                            <li><a href="https://frontfourcellars.orderport.net/wines/wines/Gift-Cards">Gift&nbsp;Cards</a></li>
+                            <li><a href="https://frontfourcellars.orderport.net/wines/wines/Merchandise">Merch</a></li>
+                        </ul>
+                    </li>
+                   <li>
+                        <a href="#">Events</a>
+                        <ul>
+                            <li><a href="https://frontfourcellars.orderport.net/wines/Events">Calendar</a></li>
+                            <li><a href="https://frontfourcellars.orderport.net/wines/Events">Tickets</a></li>
+                        </ul>
+                    </li>
+                   <li>
+                        <a href="#">Reservations</a>
+                        <ul>
+                            <li><a href="https://frontfourcellars.orderport.net/reservations">NH&nbsp;Tasting&nbsp;Room</a></li>
+                            <li><a href="https://frontfourcellars.orderport.net/wines/Book-a-Group-Event">Book&nbsp;a&nbsp;Group&nbsp;Event</a></li>
+                            <li data-package-title><Link href="/events/packages">Packages</Link></li>
+                            <li data-package><Link href="/events/packages">Weddings</Link></li>
+                            <li data-package><Link href="/events/packages">Special&nbsp;Occasions</Link></li>
+                            <li data-package><Link href="/events/packages">Realtor/Mortgage</Link></li>
+                            <li data-package><Link href="/events/packages">Private&nbsp;Label&nbsp;Program</Link></li>
+                        </ul>
+                    </li>
+                   <li>
+                        <a href="https://frontfourcellars.orderport.net/wine-club/">Wine Club</a>
+                    </li>
+                   <li>
+                        <a href="#">About Us</a>
+                        <ul>
+                            <li><Link href="/about/story">Our Story</Link></li>
+                            <li><Link href="/about/team">Our Team</Link></li>
+                            <li><Link href="/about/philosophy">Our Philosophy</Link></li>
+                            <li><Link href="/about/contactus">Contact Us</Link></li>
+                        </ul>
+                    </li>
+                   <li>
+                        <Link href="#">Locations</Link>
+                        <ul>
+                            <li><Link href="/newhampshire">New&nbsp;Hampshire</Link></li>
+                        </ul>
+                    </li>
+                </ul>
+                <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="x" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z"></path></svg>
+            </nav>
+            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bars" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"></path></svg>
         </header>
-        </>
     );
 }
 
