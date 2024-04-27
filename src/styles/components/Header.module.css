@@ -1,3 +1,13 @@
+.auth-wrapper {
+    margin-top: 200px;
+    font-size: 14px;
+    font-family: Karla;
+}
+
+#contentContainer {
+    min-height: 800px;
+}
+
 .header {
     background-color: white;
     width: 100%;
@@ -43,6 +53,12 @@
     font-size: 1.6rem;
     font-weight: 800;
 }
+.header nav:nth-of-type(2) > ul > li:has(ul) > a {
+    /*
+    pointer-events: none;
+    cursor: default;
+    */
+}
 .header nav:nth-of-type(2) ul li a:hover {
     color: #d5b137;
 }
@@ -55,7 +71,7 @@
 .header nav:nth-of-type(2) ul li[data-package] {
     padding-left: 20px;
 }
-.header nav:nth-of-type(2) ul li ul[class="selected"] {
+.header nav:nth-of-type(2) ul li ul[class="selected-nav-item"] {
     display:block !important;
 }
 .header nav:nth-of-type(2) ul li ul li {
@@ -156,195 +172,4 @@
     .header svg {
         display: none;
     }
-}
-
-
-
-
-
-
-.headerContainer {
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: white;
-    padding: 1rem 5%;
-    width: 90%;
-    margin: 0 auto;
-    padding-top: 35px;
-    max-height: 150px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    z-index: 999999;
-}
-
-.headerLogin {
-    position: absolute;
-    right: 5%;
-    top: 10px;
-    z-index: 666666;
-    font-size: 14px;
-}
-
-.headerTagline {
-    text-align: center; 
-    font-size: 26px; 
-    font-style: italic; 
-    color: #5d0000; 
-    position: absolute; 
-    top: 1rem; 
-    right: 50%; 
-    transform: translateX(50%);
-}
-
-@media screen and (max-width: 1200px) {
-    .headerTagline {
-        font-size: 1em;
-        position: absolute;
-        right: inherit;
-        top: 50%;
-        left: calc((105% + 100px) / 2);
-        transform: translate(-50%, -50%);
-        width: calc(95% - 120px);
-    }
-}
-
-.otherContainer {
-    padding-top: 50px;
-    position: relative;
-}
-
-.otherContainer a {
-    color: black;
-    text-decoration: none;
-}
-
-.otherContainer a:visited {
-    color: black;
-}
-
-@media screen and (max-width: 1200px) {
-    .otherContainer {
-        display: none;
-    }
-}
-
-.navMobileContainer {
-    display: none;
-}
-
-@media screen and (max-width: 1200px) {
-    .navMobileContainer {
-        display: block;
-        position: absolute;
-        right: 20px;
-        bottom: 10px;
-    }
-}
-
-@media screen and (max-width: 1200px) {
-    .mobileNav {
-        position: absolute;
-        top: 157px;
-        left: 0;
-        background: #efefef;
-        width: 100%;
-        max-height: calc(100vh - 196px);
-        overflow-y: scroll;
-    }
-
-    .mobileNav a {
-        text-decoration: none;
-        color: inherit;
-        width: 100%;
-        display: block;
-    }
-
-    .mobileNav ul {
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-    }
-
-    .mobileNav ul li {
-        padding: 0 20px;
-        border-bottom: 1px solid #ccc;
-        line-height: 40px;
-    }
-
-    .mobileNav ul li:last-child {
-        border-bottom: none;
-    }
-}
-
-.navContainer {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    padding-bottom: 15px;
-    flex: 1;
-    justify-content: center;
-    font-size: 17px;
-    color: rgb(22, 14, 32);
-}
-
-@media screen and (max-width: 1200px) {
-    .navContainer {
-        display: none;
-    }
-}
-
-.navContainer ul {
-    align-items: center;
-    background-color: transparent;
-    display: flex;
-    margin: 0;
-    padding: 0;
-    position: relative;
-    max-width: unset;
-}
-
-.navContainer ul li {
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
-    margin-right: 0.8rem;
-    position: relative;
-    cursor: pointer;
-}
-
-.navContainer ul li a {
-    color: inherit;
-    text-decoration: none;
-    padding: 12px 10px 12px 20px;
-}
-
-.navContainer ul li a:visited {
-    color: inherit;
-}
-
-.navContainer ul li button {
-    align-items: center;
-    background-color: transparent;
-    border: 0;
-    color: #160E20;
-    display: inline-flex;
-    justify-content: center;
-    padding: 10px;
-}
-
-.navContainer ul li button svg {
-    height: 12px;
-    width: 12px;
-}
-
-.navContainer ul li ul li {
-    width: 100%;
-    margin: 0;
-}
-
-.navContainer ul li ul li:hover {
-    background-color: #ccc;
 }

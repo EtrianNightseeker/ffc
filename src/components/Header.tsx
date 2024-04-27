@@ -1,14 +1,8 @@
 import { useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faX} from '@fortawesome/free-solid-svg-icons';
 
-import { Roboto, Karla } from 'next/font/google';
 import styles from '@/styles/components/Header.module.css';
-
-const roboto = Roboto({ weight: '400', subsets: ['latin'] });
-const karla = Karla({ weight: 'variable', subsets: ['latin'] });
 
 const Header = () => {
 
@@ -19,7 +13,31 @@ const Header = () => {
         document.querySelector("header nav ~ nav svg")?.addEventListener("click",() => {
             document.querySelector("header nav:nth-of-type(2)")?.classList.remove("active");
         })
+
+
+        const mobileNavItems = document.querySelectorAll('header nav:nth-of-type(2) > ul > li:has(ul)');
+        for (const item of mobileNavItems) {
+          item.addEventListener('click', function (event) {
+            try {
+                const selected = document.querySelector('header nav:nth-of-type(2) ul > li > ul[class="selected-nav-item"]');
+
+                if (selected) {
+                    selected.classList.remove("selected-nav-item")
+                }
+
+                // @ts-ignore
+                if (event.target.nextSibling !== null) {
+                    // @ts-ignore
+                    event.target.nextSibling.classList.add("selected-nav-item");
+                }
+            }
+            catch(e) {
+                console.log(e);
+            }
+          });
+        }
         
+        /*
         const mobileNavItems = document.querySelectorAll('header nav:nth-of-type(2) ul li');
         for (const item of mobileNavItems) {
           item.addEventListener('click', function (event) {
@@ -35,6 +53,7 @@ const Header = () => {
             catch(e) {}
           });
         }
+        */
 
     },[]);
 
@@ -66,11 +85,11 @@ const Header = () => {
                         <ul>
                             <li><a href="https://frontfourcellars.orderport.net/reservations">NH&nbsp;Tasting&nbsp;Room</a></li>
                             <li><a href="https://frontfourcellars.orderport.net/wines/Book-a-Group-Event">Book&nbsp;a&nbsp;Group&nbsp;Event&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
-                            <li data-package-title><Link href="/events/packages">Packages</Link></li>
-                            <li data-package><Link href="/events/packages">Weddings</Link></li>
-                            <li data-package><Link href="/events/packages">Special&nbsp;Occasions</Link></li>
-                            <li data-package><Link href="/events/packages">Realtor/Mortgage</Link></li>
-                            <li data-package><Link href="/events/packages">Private&nbsp;Label&nbsp;Program</Link></li>
+                            <li data-package-title="true"><Link href="/events/packages">Packages</Link></li>
+                            <li data-package="true"><Link href="/events/packages">Weddings</Link></li>
+                            <li data-package="true"><Link href="/events/packages">Special&nbsp;Occasions</Link></li>
+                            <li data-package="true"><Link href="/events/packages">Realtor/Mortgage</Link></li>
+                            <li data-package="true"><Link href="/events/packages">Private&nbsp;Label&nbsp;Program</Link></li>
                         </ul>
                     </li>
                    <li>
@@ -106,7 +125,7 @@ const Header = () => {
             <nav>
                 <ul>
                    <li>
-                        <a href="#">Shop</a>
+                        <a href="javascript:void(0)">Shop</a>
                         <ul>
                             <li><a href="https://frontfourcellars.orderport.net/wines/All-Wines">All</a></li>
                             <li><a href="https://frontfourcellars.orderport.net/wines/All-Wines/Red-Wine">Red</a></li>
@@ -118,29 +137,29 @@ const Header = () => {
                         </ul>
                     </li>
                    <li>
-                        <a href="#">Events</a>
+                        <a href="javascript:void(0)">Events</a>
                         <ul>
                             <li><a href="https://frontfourcellars.orderport.net/wines/Events">Calendar</a></li>
                             <li><a href="https://frontfourcellars.orderport.net/wines/Events">Tickets</a></li>
                         </ul>
                     </li>
                    <li>
-                        <a href="#">Reservations</a>
+                        <a href="javascript:void(0)">Reservations</a>
                         <ul>
                             <li><a href="https://frontfourcellars.orderport.net/reservations">NH&nbsp;Tasting&nbsp;Room</a></li>
                             <li><a href="https://frontfourcellars.orderport.net/wines/Book-a-Group-Event">Book&nbsp;a&nbsp;Group&nbsp;Event</a></li>
-                            <li data-package-title><Link href="/events/packages">Packages</Link></li>
-                            <li data-package><Link href="/events/packages">Weddings</Link></li>
-                            <li data-package><Link href="/events/packages">Special&nbsp;Occasions</Link></li>
-                            <li data-package><Link href="/events/packages">Realtor/Mortgage</Link></li>
-                            <li data-package><Link href="/events/packages">Private&nbsp;Label&nbsp;Program</Link></li>
+                            <li data-package-title="true"><Link href="/events/packages">Packages</Link></li>
+                            <li data-package="true"><Link href="/events/packages">Weddings</Link></li>
+                            <li data-package="true"><Link href="/events/packages">Special&nbsp;Occasions</Link></li>
+                            <li data-package="true"><Link href="/events/packages">Realtor/Mortgage</Link></li>
+                            <li data-package="true"><Link href="/events/packages">Private&nbsp;Label&nbsp;Program</Link></li>
                         </ul>
                     </li>
                    <li>
                         <a href="https://frontfourcellars.orderport.net/wine-club/">Wine Club</a>
                     </li>
                    <li>
-                        <a href="#">About Us</a>
+                        <a href="javascript:void(0)">About Us</a>
                         <ul>
                             <li><Link href="/about/story">Our Story</Link></li>
                             <li><Link href="/about/team">Our Team</Link></li>
@@ -149,7 +168,7 @@ const Header = () => {
                         </ul>
                     </li>
                    <li>
-                        <Link href="#">Locations</Link>
+                        <Link href="javascript:void(0)">Locations</Link>
                         <ul>
                             <li><Link href="/newhampshire">New&nbsp;Hampshire</Link></li>
                         </ul>
