@@ -36,25 +36,6 @@ const Header = () => {
             }
           });
         }
-        
-        /*
-        const mobileNavItems = document.querySelectorAll('header nav:nth-of-type(2) ul li');
-        for (const item of mobileNavItems) {
-          item.addEventListener('click', function (event) {
-            // @ts-ignore
-            try {
-                const selected = document.querySelector('header nav:nth-of-type(2) ul li ul[class="selected"]');
-                if (selected) {
-                    selected.classList.remove("selected")
-                }
-                // @ts-ignore
-                event.target.nextSibling.classList.add("selected");
-            }
-            catch(e) {}
-          });
-        }
-        */
-
     },[]);
 
     return (
@@ -69,8 +50,8 @@ const Header = () => {
                             <li><a href="https://frontfourcellars.orderport.net/wines/All-Wines/Rose-Wine">Rose</a></li>
                             <li><a href="https://frontfourcellars.orderport.net/wines/All-Wines/White-Wine">White</a></li>
                             <li><a href="https://frontfourcellars.orderport.net/wines/All-Wines/Sparkling">Sparkling</a></li>
-                            <li><a href="https://frontfourcellars.orderport.net/wines/wines/Gift-Cards">Gift&nbsp;Cards</a></li>
-                            <li><a href="https://frontfourcellars.orderport.net/wines/wines/Merchandise">Merch</a></li>
+                            <li><a href="https://frontfourcellars.orderport.net/wines/Gift-Cards">Gift&nbsp;Cards</a></li>
+                            <li><a href="https://frontfourcellars.orderport.net/wines/Merchandise">Merch</a></li>
                         </ul>
                     </li>
                    <li>
@@ -132,8 +113,8 @@ const Header = () => {
                             <li><a href="https://frontfourcellars.orderport.net/wines/All-Wines/Rose-Wine">Rose</a></li>
                             <li><a href="https://frontfourcellars.orderport.net/wines/All-Wines/White-Wine">White</a></li>
                             <li><a href="https://frontfourcellars.orderport.net/wines/All-Wines/Sparkling">Sparkling</a></li>
-                            <li><a href="https://frontfourcellars.orderport.net/wines/wines/Gift-Cards">Gift&nbsp;Cards</a></li>
-                            <li><a href="https://frontfourcellars.orderport.net/wines/wines/Merchandise">Merch</a></li>
+                            <li><a href="https://frontfourcellars.orderport.net/wines/Gift-Cards">Gift&nbsp;Cards</a></li>
+                            <li><a href="https://frontfourcellars.orderport.net/wines/Merchandise">Merch</a></li>
                         </ul>
                     </li>
                    <li>

@@ -55,6 +55,7 @@
   margin: 0;
   margin-top: 10px;
   color: #066;
+  line-height: 1.2;
 }
 .footerContainer section h3 ~ hr {
     margin-top: 0px;
