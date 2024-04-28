@@ -47,8 +47,12 @@ const Footer = () => {
                             <br/>
                             <strong>Hours:</strong>
                             <div>
-                                <em>Mon-Thurs:&nbsp;</em>
+                                <em>Mon-Wed:&nbsp;</em>
                                 <em>12pm - 7pm</em>
+                            </div>
+                            <div>
+                                <em>Thurs:</em>
+                                <em>2pm - 6pm</em>
                             </div>
                             <div>
                                 <em>Fri & Sat:</em>

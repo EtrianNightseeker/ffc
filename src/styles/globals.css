@@ -10,11 +10,12 @@ body {
   /*background: rgb(238, 235, 232);*/
   overflow-x: hidden;
   position: relative;
+  line-height: 1.5;
 }
 
 
 nav:nth-of-type(2).active {
-    right:0px !important;
+    left:0px !important;
 }
 
 .v65-widgetProduct-addToCart legend {

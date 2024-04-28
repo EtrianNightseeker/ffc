@@ -1,0 +1,285 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Prata&display=swap');
+
+.auth-wrapper {
+    margin-top: 200px;
+    font-size: 14px;
+    font-family: Karla;
+}
+
+#contentContainer {
+    min-height: 800px;
+}
+
+.header {
+    background-color: white;
+    width: 100%;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 10;
+    top: 0;
+}
+.header nav,
+.header nav ~ a {
+    display:none;
+}
+.header nav:nth-of-type(2) {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top:0;
+    right:-320px;
+    height: 100%;
+    width: 320px;
+    background-color: #5c0100;
+    z-index:30;
+    transition: right .5s;
+}
+
+.header nav:nth-of-type(2).active {
+    right:0px !important;
+}
+.header nav:nth-of-type(2) ul {
+    padding: 0;
+}
+.header nav:nth-of-type(2) ul li {
+    list-style: none;
+    margin-top: 30px;
+    margin-left: 30px;
+}
+.header nav:nth-of-type(2) ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.6rem;
+    font-weight: 800;
+}
+.header nav:nth-of-type(2) ul li a:hover {
+    color: #d5b137;
+}
+.header nav:nth-of-type(2) ul li ul {
+    display: none;
+}
+.header nav:nth-of-type(2) ul li[data-package-title] a {
+    font-weight: bold;
+}
+.header nav:nth-of-type(2) ul li[data-package] {
+    padding-left: 20px;
+}
+.header nav:nth-of-type(2) ul li ul[class="selected-nav-item"] {
+    display:block !important;
+}
+.header nav:nth-of-type(2) ul li ul li {
+    margin-top: 10px;
+    display:block;
+}
+.header nav:nth-of-type(2) ul li ul li a {
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+.header nav ~ a:has(img) {
+    display:block
+}
+.header svg {
+    position: absolute;
+    right:20px;
+    top:20px;
+    width: 25px;
+    height: auto;
+    color: #5c0100;
+    cursor: pointer;
+}
+.header nav:nth-of-type(2) svg {
+    color: white;
+    position: absolute;
+    right:20px;
+    top:20px;
+    width: 15px;
+    height: auto;
+    cursor: pointer;
+}
+@media screen and (min-width: 1295px) {
+    .header nav ~ a ~ nav {
+        display:none;
+    }
+    .header nav {
+        width: 76%;
+        display:block;
+    }
+    .header a img {
+        display:none;
+    }
+    .header nav a img {
+        display:block;
+    }
+    .header nav ul {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0;
+    }
+    .header nav:first-child {
+        margin-left: 5rem;
+    }
+    .header nav ul li {
+        display: inline-block;
+        position: relative;
+    }
+    .header nav ul li a {
+        text-decoration: none;
+        color: #5c0100;
+        font-size: 1.6rem;
+        font-weight: 500;
+    }
+    .header nav ul li:has(ul) ul {
+        background-color: #5c0100;
+        flex-direction: column;
+        position: absolute;
+        align-items: flex-start;
+        display:none;
+        margin-top: 0px;
+    }
+    .header nav ul li:has(ul) ul li[data-package-title] a {
+        font-weight:bold;
+    }
+    .header nav ul li:has(ul) ul li[data-package] {
+        padding-left: 20px;
+    }
+    .header nav ul li:has(ul):hover ul {
+        display:block;
+    }
+    .header nav ul li:has(ul) ul li:hover {
+        background-color: #d5b137;
+    }
+    .header nav ul li:has(ul) ul li:hover a {
+        color: #5c0100;
+    }
+    .header nav ul li:has(ul) li {
+        display: block;
+    }
+    .header nav ul li:has(ul) li a {
+        color: white;
+        padding:10px;
+        display:block;
+        font-size: 1.2rem;
+    }
+    .header svg {
+        display: none;
+    }
+}
+
+.container {
+    padding: 1em 2.5% 0 2.5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: white;
+    color: #066;
+}
+
+.footerContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    color: #066;
+    width: 100%;
+}
+.footerContainer div {
+  font-family: "Karla", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  max-width: 1200px;
+}
+.footerContainer > div {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+}
+.footerContainer > div ~ div {
+    margin: 40px 0 20px 0;
+    text-align: center;
+    display: flex;
+    justify-content:center;
+}
+.footerContainer > div section {
+    margin-top: 20px;
+    width: 100%;
+    min-height: 200px;
+}
+.footerContainer > div section:nth-of-type(2) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 200px;
+}
+.footerContainer section h3 {
+  font-family: "Prata", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.1em; 
+  margin: 0;
+  margin-top: 10px;
+  color: #066;
+}
+.footerContainer section h3 ~ hr {
+    margin-bottom: 5px;
+}
+.footerContainer section:nth-of-type(1) > div {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+.footerContainer section:nth-of-type(1) > div div {
+    width: 48%;
+}
+.footerContainer section:nth-of-type(1) > div > div:nth-of-type(2) > div {
+    display: flex;
+    width: 165px;
+    justify-content: space-between;
+}
+.footerContainer section:nth-of-type(2) a {
+    display: inline-block;
+    margin-right: 20px;
+}
+.footerContainer section:nth-of-type(2) a svg {
+    width: 25px;
+    height: auto;
+    color: #066;
+}
+.footerContainer section:nth-of-type(2) div:nth-of-type(1) div {
+    display: flex;
+    justify-content: flex-start;
+}
+.footerContainer section:nth-of-type(2) a {
+    color: #066;
+    text-decoration: none;
+}
+.footerContainer section:nth-of-type(3) a:hover {
+    color: #0aa;
+}
+
+@media screen and (min-width: 950px) {
+    .footerContainer section:nth-of-type(1) > div div {
+        width: 40%;
+    }
+    .footerContainer > div section:nth-of-type(1) {
+        margin-top: 20px;
+        width: 45%;
+    }
+    .footerContainer > div section:nth-of-type(2) {
+        margin-top: 20px;
+        width: 45%;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+    .footerContainer > div {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
