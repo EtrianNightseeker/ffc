@@ -1,9 +1,4 @@
-import Image from 'next/image';
-import { useEffect } from 'react';
-
 import Link from 'next/link';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebook, faTwitter, faYoutube, faLinkedin, faInstagram } from '@fortawesome/free-brands-svg-icons';
 
 import styles from '@/styles/components/Footer.module.css';
 
@@ -97,7 +92,7 @@ const Footer = () => {
                 </section>
             </div>
             <div>
-                <p>&copy;{getYear()} Front Four Cellars, LLC<br />All Rights Reserved</p>
+                <p>&copy;{getYear()} Front Four Cellars, LC<br />All Rights Reserved</p>
             </div>
         </section>
     )
